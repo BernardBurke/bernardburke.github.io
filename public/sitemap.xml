@@ -2,13 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2026-01-14T14:30:00+11:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/portfolio/</loc>
+    <lastmod>2026-01-14T14:30:00+11:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/posts/2022-11-03-and-before-or/</loc>
   </url><url>
     <loc>http://localhost:1313/posts/2021-12-09-anxiety-dropped/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/base-emotions/</loc>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
   </url><url>
     <loc>http://localhost:1313/about/</loc>
   </url><url>

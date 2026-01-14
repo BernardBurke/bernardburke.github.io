@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Open-Source on Ben Burke</title>
+    <link>http://localhost:1313/tags/open-source/</link>
+    <description>Recent content in Open-Source on Ben Burke</description>
+    <generator>Hugo -- 0.146.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 14 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>40&#43; Years in the Machine Room: A Career History</title>
+      <link>http://localhost:1313/posts/my-work-history/</link>
+      <pubDate>Wed, 14 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/my-work-history/</guid>
+      <description>&lt;p&gt;I have spent the last three and a half decades working in the engine room of the Australian technology industry. From the days of debugging VAX registers with an oscilloscope to orchestrating Large Language Model workflows in Python, my career has been defined by one constant: &lt;strong&gt;a refusal to get lost in abstraction.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I believe that to architect a solution, you must understand the machine underneath it.&lt;/p&gt;
+&lt;h2 id=&#34;the-foundation-digital-equipment-corp-1984--1993&#34;&gt;The Foundation: Digital Equipment Corp (1984 – 1993)&lt;/h2&gt;
+&lt;p&gt;My career began at the height of the mini-computer era with &lt;strong&gt;Digital Equipment Corporation (DEC)&lt;/strong&gt;. This was not just a job; it was an apprenticeship in first principles.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Architecture on Ben Burke</title>
+    <link>http://localhost:1313/tags/architecture/</link>
+    <description>Recent content in Architecture on Ben Burke</description>
+    <generator>Hugo -- 0.146.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 14 Jan 2026 14:30:00 +1100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/architecture/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The ROI of the Generalist: Efficiency, Budget, and Delivery</title>
+      <link>http://localhost:1313/posts/my-work-history/</link>
+      <pubDate>Wed, 14 Jan 2026 14:30:00 +1100</pubDate>
+      <guid>http://localhost:1313/posts/my-work-history/</guid>
+      <description>Technical silos cost money. How an oversight role bridging infrastructure, data, and code drives down project costs and eliminates the &amp;lsquo;communication tax&amp;rsquo;.</description>
+    </item>
+  </channel>
+</rss>

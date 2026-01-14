@@ -41,7 +41,7 @@ params:
     title: "Ben Burke"
     subtitle: "IT Consultant | Linux Enthusiast | Open Source Contributor"
     # If you have a profile pic, uncomment the next line:
-    # imageUrl: "/assets/me.jpg"
+    imageUrl: "/assets/images/ben1.jpg"
     imageWidth: 120
     imageHeight: 120
     buttons:
