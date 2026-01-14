@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Post-Truth-World on Ben Burke</title>
+    <link>http://localhost:1313/tags/post-truth-world/</link>
+    <description>Recent content in Post-Truth-World on Ben Burke</description>
+    <generator>Hugo -- 0.146.0</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/tags/post-truth-world/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Gray Lady Winked</title>
+      <link>http://localhost:1313/posts/2021-09-23-michael-shermer-ashley-rindsberg-the-grey-lady-winked/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2021-09-23-michael-shermer-ashley-rindsberg-the-grey-lady-winked/</guid>
+      <description>Michael Shermer with Ashley Rindsberg - The Grey Lady Winked</description>
+    </item>
+  </channel>
+</rss>

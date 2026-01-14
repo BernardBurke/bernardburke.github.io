@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head>
+	<meta name="generator" content="Hugo 0.146.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Ben Burke</title>
+<meta name="keywords" content="Blog, Portfolio, PaperMod">
+<meta name="description" content="IT Consultant | Linux Enthusiast | Open Source Contributor">
+<meta name="author" content="Ben Burke">
+<link rel="canonical" href="http://localhost:1313/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="http://localhost:1313/">
+  <meta property="og:site_name" content="Ben Burke">
+  <meta property="og:title" content="Ben Burke">
+  <meta property="og:description" content="IT Consultant | Linux Enthusiast | Open Source Contributor">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ben Burke">
+<meta name="twitter:description" content="IT Consultant | Linux Enthusiast | Open Source Contributor">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Ben Burke",
+  "url": "http://localhost:1313/",
+  "description": "IT Consultant | Linux Enthusiast",
+  "logo": "http://localhost:1313/favicon.ico",
+  "sameAs": [
+      
+  ]
+}
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Ben Burke (Alt + H)">Ben Burke</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/portfolio/" title="Professional">
+                    <span>Professional</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="Personal Blog">
+                    <span>Personal Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archive/index.html" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<div class="post-content"><h1 id="welcome">Welcome<a hidden class="anchor" aria-hidden="true" href="#welcome">#</a></h1>
+<p>I am an IT Consultant based in Australia, specializing in Linux systems and open-source solutions.</p>
+<p>This site is currently undergoing a complete reconstruction to better separate my professional work from my personal interests.</p>
+<h3 id="-professional-portfolio">📂 <a href="/portfolio">Professional Portfolio</a><a hidden class="anchor" aria-hidden="true" href="#-professional-portfolio">#</a></h3>
+<p>Case studies, projects, and technical consulting history.
+<em>Focused on: Linux, NixOS, Python, Bash, Lua.</em></p>
+<h3 id="-personal-blog">📝 <a href="/posts">Personal Blog</a><a hidden class="anchor" aria-hidden="true" href="#-personal-blog">#</a></h3>
+<p>Thoughts on open source, macroeconomics, Integral Theory, and other interests.</p>
+<hr>
+<h3 id="-archives">🏛️ Archives<a hidden class="anchor" aria-hidden="true" href="#-archives">#</a></h3>
+<p>Looking for the previous version of this site?
+<a href="/archive/index.html"><strong>Access the Archive Here</strong></a></p>
+
+
+</div>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Investments And Perpetual Motion
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Investments and Money I am a difficult person on this topic. As a near 60 year old, many people around me are very focused on their Investments.
+I think I reply pretty consistently, borrowing from some of my Dad’s lessons on this topic.
+Dad would say, invest in your own business. At least you have some control over what happens. I think this was born from many disappointments in business, where an external event (like a currency revaluation) wiped out years of work.
+...</p>
+  </div>
+  <footer class="entry-footer"><span>7 min</span>&nbsp;·&nbsp;<span>Ben</span></footer>
+  <a class="entry-link" aria-label="post link to Investments And Perpetual Motion" href="http://localhost:1313/posts/2022-02-18-investments-and-perpetual-motion/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Rabbit Holes Of September 2021
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Mind-Body problems Hardly a new topic, but for me, an invigorating take on the topic arrives with a freely available e-book/web-book Mind-Body Problems by science journalist John Horgan, of Scientific American fame.
+From what I’ve seen so far, I think I’ve stumbled into a Welcome rabbit hole… one that involves a science journalist who is far from stuck in materialism and has the authority of The Scientific American behind him
+I wrote this to John this morning, after finishing the chapter titled The Cognitive Scientist: Strange Loops All the Way Down and
+...</p>
+  </div>
+  <footer class="entry-footer"><span>3 min</span>&nbsp;·&nbsp;<span>Ben</span></footer>
+  <a class="entry-link" aria-label="post link to Rabbit Holes Of September 2021" href="http://localhost:1313/posts/2021-09-28-rabbit-holes-of-september-2021/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Sense Attention
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> T O N E P E W W I P T L S h f o m l v a i &#39; u r i a e t p a o s t m l e f m B h t n l h h l e e s H i i i e u e s i a a g n n t t d e e n o c r t n g e s i v n g f o a c e s o u e s m h s b s b n p r i r G e w i s e e s y n i o s i n c e g o g g o d g o o x e d n i h d i e . f m p t e n a t - n e a m t t E t f B s n l a h e t p v o o a d a n e n e u i r n s s n d t n s l b c g o d s s i s h e e . m s a o i i t i s e n n o n o n t d n g w g p h s . n u i d b l n o y l g w i s n t n . h g e s n e o u t g e h n t s i i o n n t s o f s o o r m e e s t e h e i i n n g g . </p>
+  </div>
+  <footer class="entry-footer"><span>2 min</span>&nbsp;·&nbsp;<span>Ben</span></footer>
+  <a class="entry-link" aria-label="post link to Sense Attention" href="http://localhost:1313/posts/2023-03-02-sense-attention/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Signal To Noise
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> S B M C W C H D I C P p i u o o a l o o n h R o g y r s t u r l o i n i e t c b s l t i o s a n ? s h s e a h c f e l g i s r i e l g n o s F a t m e o g f l i i r n o o s i n w l e n r s e t t k f h l u o N e x h h e e i u d y o e t e e r t s s i t n e T n e i s o j r p B r a o e y o n l o o l n n s y a o y y o , s l y s &#39; i s s s e , l o s i n g m y p o i s e </p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span>&nbsp;·&nbsp;<span>Ben</span></footer>
+  <a class="entry-link" aria-label="post link to Signal To Noise" href="http://localhost:1313/posts/2023-03-07-signal-to-noise/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Spring Is The Word
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Words and Expressions that Leap into consciousness Compersion This was a new term to me a few months ago. As it’s not in widespread use, it’s a little hard to apply a contextual meaning.
+Here is one that I’ve been happy to adopt
+The word compersion is loosely defined as the opposite of jealousy. Instead of feeling upset or threatened &gt; when your partner romantically or sexually interacts with another person, you feel a sense of happiness for &gt; them.
+...</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span>&nbsp;·&nbsp;<span>Ben</span></footer>
+  <a class="entry-link" aria-label="post link to Spring Is The Word" href="http://localhost:1313/posts/2021-10-03-spring-is-the-word/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">The Gray Lady Winked
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>The Gray Lady Winked - a focus on NYT An author can boldly go where publishers fear to tread
+If you’ve ever thought about the power of the New York Times in controlling narratives, you might want to have listen to The Michael Shermer Show Episode 211
+While I’m looking forward to the Third Series of Succession , I’ve done very little follow up on the idea that Succession is based on the Sulzberger Clan
+...</p>
+  </div>
+  <footer class="entry-footer"><span>2 min</span>&nbsp;·&nbsp;<span>Ben</span></footer>
+  <a class="entry-link" aria-label="post link to The Gray Lady Winked" href="http://localhost:1313/posts/2021-09-23-michael-shermer-ashley-rindsberg-the-grey-lady-winked/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">The Shit Just Got Real
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>No, I don’t know anybody who knows anybody that predicted this. This news hit pretty hard in my view. The reactions I’ve heard from friends and journalists include:
+A good distraction from other problems popped out to distract from election issues. A clear message that Australia remains a US ally when considering rising tensions with China. If we (oz) had any brains and really wanted nuclear submarines, we’d buy them from Japan instead of starting another endless sub construction debacle. The timeline for constructing and deploying such a sub is the 2040s!
+...</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span>&nbsp;·&nbsp;<span>Ben</span></footer>
+  <a class="entry-link" aria-label="post link to The Shit Just Got Real" href="http://localhost:1313/posts/2021-09-18-the-shit-just-got-real/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">This Person Does Not Exist
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Can you tell already? Look closely. Something is not right. This picture was created by a GAN, a generative adversarial network.
+Trying to talk to a lot of people is hard. We reduce things down to sound bites and 5 minute news reports. Expectations point as News packaged, similar to a can of baked beans.
+It might be a but more complicated than that. If you wanna rev me up on a conversation, let’s talk about AI.
+...</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span>&nbsp;·&nbsp;<span>Ben</span></footer>
+  <a class="entry-link" aria-label="post link to This Person Does Not Exist" href="http://localhost:1313/posts/2021-09-16-this-person-does-not-exist/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">This Week In Media - Issue #0.1
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Keeping the slivers and nuggets The internet can be horrific and wonderful in the same hour. For me, there is so much juicy content that I’ll put up with a few downsides.
+I’m going to try and do this every week, so I don’t forget the Wonder I experienced when panning for gold in the river of internet.
+A standout Essay For me this week, A theory of my own mind was a standout.
+...</p>
+  </div>
+  <footer class="entry-footer"><span>3 min</span>&nbsp;·&nbsp;<span>Ben</span></footer>
+  <a class="entry-link" aria-label="post link to This Week In Media - Issue #0.1" href="http://localhost:1313/posts/2021-09-27-this-week-in-media-28-sep/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Travis Oliphant (Numpy Scipy) on the  Lex Fridman podcast
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Travis and Lex on Python and libraries If you are into programming and Python, this podcast is for you.
+I continue to be amazed by Lex Fridman . In my view, he’s an authoritative voice on AI - that, by itself, makes him a hero of mine. Teaching at Deeplearning at MIT is a pretty good qualification.
+There is a lot more to Lex than robotics and machine learning. (eg. Eric Weinstein, Difficult Conversations, Freedom and Physics )
+...</p>
+  </div>
+  <footer class="entry-footer"><span>1 min</span>&nbsp;·&nbsp;<span>Ben</span></footer>
+  <a class="entry-link" aria-label="post link to Travis Oliphant (Numpy Scipy) on the  Lex Fridman podcast" href="http://localhost:1313/posts/2021-09-23-travis-oliphant-numpy-scipy-lex-fridman/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="http://localhost:1313/">
+      «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="http://localhost:1313/page/3/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">Ben Burke</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

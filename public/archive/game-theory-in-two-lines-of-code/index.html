@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="icon" href="../assets/images/logo.png">
+
+<title>Game Theory In Two Lines Of Code | Ben's musings on life</title>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Game Theory In Two Lines Of Code | Ben’s musings on life</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Game Theory In Two Lines Of Code" />
+<meta name="author" content="Ben" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Can we simplify the Theory? I’m Game." />
+<meta property="og:description" content="Can we simplify the Theory? I’m Game." />
+<link rel="canonical" href="index.html" />
+<meta property="og:url" content="http://www.benburke.org/game-theory-in-two-lines-of-code/" />
+<meta property="og:site_name" content="Ben’s musings on life" />
+<meta property="og:image" content="http://www.benburke.org/assets/images/game-theory.jfif" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-10-10T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://www.benburke.org/assets/images/game-theory.jfif" />
+<meta property="twitter:title" content="Game Theory In Two Lines Of Code" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ben"},"dateModified":"2021-10-10T00:00:00+00:00","datePublished":"2021-10-10T00:00:00+00:00","description":"Can we simplify the Theory? I’m Game.","headline":"Game Theory In Two Lines Of Code","image":"http://www.benburke.org/assets/images/game-theory.jfif","mainEntityOfPage":{"@type":"WebPage","@id":"http://www.benburke.org/game-theory-in-two-lines-of-code/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://www.benburke.org/assets/images/ben_shiny.jpg"},"name":"Ben"},"url":"http://www.benburke.org/game-theory-in-two-lines-of-code/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+<link href="../assets/css/screen.css" rel="stylesheet">
+
+<link href="../assets/css/main.css" rel="stylesheet">
+
+<script src="../assets/js/jquery.min.js"></script>
+
+</head>
+
+
+<!-- change your GA id in _config.yml -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', '', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+<body class="layout-post">
+	<!-- defer loading of font and font awesome -->
+	<noscript id="deferred-styles">
+		<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	</noscript>
+
+
+<!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+
+    <div class="container pr-0">
+
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="../index.html">
+    <img src="../assets/images/ben_shiny.jpg" alt="Ben's musings on life">
+    </a>
+    <!-- End Logo -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+
+        <!-- Begin Menu -->
+
+            <ul class="navbar-nav ml-auto">
+
+                
+                <li class="nav-item">
+                
+                <a class="nav-link" href="../index.html">Blog</a>
+                </li>
+
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="../calendar.html">Calendar</a>
+                </li>
+
+                <li class="nav-item">
+                <a class="nav-link" href="../about.html">About</a>
+                </li>
+
+                <script src="../assets/js/lunr.js"></script>
+
+
+<style>
+    .lunrsearchresult .title {color: #d9230f;}
+    .lunrsearchresult .url {color: silver;}
+    .lunrsearchresult a {display: block; color: #777;}
+    .lunrsearchresult a:hover, .lunrsearchresult a:focus {text-decoration: none;}
+    .lunrsearchresult a:hover .title {text-decoration: underline;}
+</style>
+
+
+<form class="bd-search" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+    <input type="text" class="form-control text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+</form>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="../assets/js/lunrsearchengine.js"></script>
+
+            </ul>
+
+        <!-- End Menu -->
+
+    </div>
+
+    </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+
+<div class="site-content">
+
+<div class="container">
+
+<!-- Site Title
+================================================== -->
+<div class="mainheading">
+    <h1 class="sitetitle">Ben's musings on life</h1>
+    <p class="lead">
+        What ideas can bring us closer together?
+    </p>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="main-content">
+    <!-- Begin Article
+================================================== -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Share -->
+        <div class="col-md-2 pl-0">
+            <div class="share sticky-top sticky-top-offset">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=Game Theory In Two Lines Of Code&url=http://www.benburke.org/game-theory-in-two-lines-of-code/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://www.benburke.org/game-theory-in-two-lines-of-code/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+
+    </ul>
+    <p>
+        Contact
+    </p>
+
+	<ul>
+        
+	<li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/messages/compose?recipient_id=351288706&text=Game Theory In Two Lines Of Code" onclick="window.open(this.href, 'twitter-dm', 'width=550,height=435');return false;">
+       		<i class="fab fa-twitter"></i>     
+	</a>
+        </li>
+
+
+	</ul>
+
+
+    
+</div>
+
+        </div>
+
+        <!-- Post -->
+        
+
+        <div class="col-md-9 flex-first flex-md-unordered">
+            <div class="mainheading">
+
+                <!-- Author Box -->
+                
+                <div class="row post-top-meta">
+                    <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0">
+                        
+                        <img class="author-thumb" src="https://www.gravatar.com/avatar/df9ebde38a071277852a98182e207110?s=250&d=mm&r=x" alt="Ben">
+                        
+                    </div>
+                    <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left">
+                        <a target="_blank" class="link-dark" href="../index.html">Ben</a><a target="_blank" href="https://twitter.com/burkawitcz" class="btn follow">Follow</a>
+                        <span class="author-description">Old School computer nerd</span>
+                    </div>
+                </div>
+                
+
+                <!-- Post Title -->
+                <h1 class="posttitle">Game Theory In Two Lines Of Code</h1>
+
+            </div>
+
+            <!-- Adsense if enabled from _config.yml (change your pub id and slot) -->
+            
+            <!-- End Adsense -->
+
+            <!-- Post Featured Image -->
+            
+
+            
+            <img class="featured-image img-fluid" src="../assets/images/game-theory.jfif" alt="Game Theory In Two Lines Of Code">
+            
+
+            
+            <!-- End Featured Image -->
+
+            <!-- Post Content -->
+            <div class="article-post">
+                <!-- Toc if any -->
+                
+                <!-- End Toc -->
+                <h1 id="can-we-simplify-the-theory-im-game">Can we simplify the Theory? I’m Game.</h1>
+
+<p>Wanna skip to the end? The summary is, game theory studies suggest that your best strategy set for life consists of:</p>
+<ul>
+  <li>Being ‘nice’ to others</li>
+  <li>Forgiving others</li>
+  <li>Being provokable by others</li>
+</ul>
+
+<p>Sounds like grand-parent wisdom, ja? Except for the last point. Read on if you’d like to break down Game Theory and what the formal studies have shown. I can promise you some surprises.</p>
+
+<p>As a long time reader of <a href="https://freakonomics.com/about/">Dubner and Levitt</a>, I’ve been a listener at the <a href="https://freakonomics.com/radio/radio-bios/">Freakanomics Radio Network</a></p>
+
+<p>It’s a great resource. The newer episodes are Steve Levitt and <a href="https://angeladuckworth.com/">Angela Duckworth</a>, who have an awesome rapport and chemistry. I recommend all of the Freakanomics shows, including <a href="https://freakonomics.com/pima/">People I mostly Admire</a>, <a href="https://freakonomics.com/nsq-archive/">No Stupid Questions</a> and <a href="https://freakonomics.com/sudhir-breaks-the-internet-2/">Sudhir Breaks the Internet</a></p>
+
+<h2 id="enter-robert-axelrod">Enter Robert Axelrod</h2>
+
+<p>This writing was inspired by a recent People I (mostly) Admire podcast, EP47 <a href="https://freakonomics.com/podcast/pima-robert-axelrod/">Why Being Nice, Forgiving, and Provokable are the Best Strategies for Life</a></p>
+
+<p>In my living study of audio learning, I’m amazed to find that salient points, such as the names of authors, will ‘stick’ even when I lose most of the content by listening while working or being otherwise distracted.</p>
+
+<p>I’d heard Robert Axelrod’s name many times before. Steve explains this early in the podcast.</p>
+
+<blockquote>
+  <p>Steve - Roughly 40 years ago, you had the idea to run a little tournament for 13 academic Game Theorists. Did you ever imagine at the time, this would launch a research agenda that get over 50,000 academic citations?</p>
+
+  <p>John - No, I just did it for fun</p>
+</blockquote>
+
+<p>The interview begins with Steve and John attempting to give a primer on Game Theory. We’ve all heard something like this before, no doubt. It’s actually not that clear of an explanation.</p>
+
+<p>The show’s producer, [Morgan Levy]{https://morganlevey.com/}, steps in to clarify. (I’m paraphrasing slightly here.)</p>
+
+<p><em>The Prisoner’s Dilemma is a hypothetical scenario in Game Theory. Imagine Steve and Morgan are in custody for jointly committing a crime. The evidence the police have is weak. The are arrested at the same time and taken to separate holding cells at a police station</em></p>
+
+<p><em>The police explain to Morgan that their are four possible outcomes to the current situation and the Morgan’s outcome will depend on what she chooses to do and what Steve, separately, chooses to do.</em></p>
+
+<p>*Two more key pieces of information are: Steve and Morgan cannot talk to each other. Morgan has only two courses of action - Rat Out on Steve, or Stay silent.</p>
+
+<p>The joint scenario set looks like this:</p>
+<ol>
+  <li>Morgan Rat’s on Steve. Steve stays silent. In this case, Morgan is Defecting on her partnership with Steve. Morgan walks free. Steve goes to jail for 20 years.</li>
+  <li>Neither party Rat’s Out on the other. Both parties are cooperating with each other. As the evidence is weak, both are sentenced to 1 year of jail time.</li>
+  <li>Both Steve and Morgan Rat Out on each other. Both go to jail for 10 years, a lower sentence as a reward for testifying against each other.</li>
+  <li>Steve Rat’s Out on Morgan. He walks free. Morgan gets 20 years in prison.</li>
+</ol>
+
+<p><em>What’s the best course of action for Morgan?</em></p>
+
+<blockquote>
+  <p>John explains: Each party is better of Defecting, double crossing the other, acting on their own interest only. But of <em>both</em> of them do that, the both end up worse off as a result.
+From a Game Theory perspective, Defection is called a Dominant Strategy, meaning it’s the best strategy, no matter what the other party does.</p>
+
+  <p>If the other guy Cooperates (stays silent), you can exploit their cooperation by Defecting. If the other party Defects, then you’d be a sucker to Cooperate.</p>
+</blockquote>
+
+<p>John goes on to point out that these kinds of scenarios (which I’ve heard many times before), describe the situation where the Game is Played only Once. The emphasis on <strong>once</strong> is where the term Dilemma is earned.</p>
+
+<h2 id="steve-sums-up">Steve sums up</h2>
+
+<p><em>So, this scenario describes a situation where the best thing we could do is Cooperate. But, since our private incentives get in the way, so we can’t do that. We left stuck at the only other outcome - we Both Defect, and end up with a pretty bad outcome, but not as bad as if we were made the Sucker by the Other.</em></p>
+
+<h2 id="the-set-of-all-games">The Set of All Games</h2>
+
+<p>This podcast took me to new places in terms of game theory by distinguishing this hypothetical single-pass game from the far more common human experience of…behaviours that arise over time in circumstances that repeat, at least partially.</p>
+
+<p>John: <em>The original analysis I read when I was 17 said, if you know when the game is going to end, you are better of Defecting right from the beginning. If you <strong>don’t</strong> know when the game is going to end, you can use the history of the game to update your strategy.</em></p>
+
+<p>Steve: <em>“If you play the game over and over, you can use the future rounds to Punish the other party if the Defect on you now. You are demonstrating to the other, “I’ll cooperate with you, as long as you don’t Defect on me.  Over time, a Game-Theoretical Equilibrium can arise as both parties learn to exploit the benefits of Cooperation”</em></p>
+
+<p>John: <em>“I call that the Shadow of the Future, the idea that the Future can effect what you’re doing now.”</em></p>
+
+<h2 id="the-repeated-prisoners-dilemma-tournament">The Repeated Prisoners Dilemma Tournament</h2>
+
+<p>John had ran a contest based on Computerised Chess Tournaments. He involved 13 academic researches who each submitted a codified or algorithmic solutions to the Repeated Prisoner’s Dilemma. John collected results over a number of iterations of this Tournament approach, and found the following ‘winning’ strategies’.</p>
+
+<h3 id="insights">Insights</h3>
+
+<p>None of the submissions included to the two most simple and obvious strategies. Always Cooperating or Always Defecting lead to the <em>worst</em> set of pay-offs.</p>
+
+<p>Reciprocity (or Tit for Tat) was far and away the most successful strategy found in the Tournament(s). The summary, from John is:</p>
+
+<p><em>“Tit for Tat - A player Cooperates on the First move. Then does what the other ‘player’ does on each subsequent move”</em></p>
+
+<p>What you are communicating is:  <em>“I’m willing to Cooperate if you are. If you’re not, I’m going to Defect. I’m just gonna Echo what you do. Hopefully you realise that you are better off Cooperating with me, then I’ll Cooperate the next time. Then we can bother do pretty well”</em></p>
+
+<p>John goes on to give explanations of tragic strategic failures - the worst of which, is Massive Retaliation or the Grim Reaper strategy. This is when a ‘player’ responds to Defection by <em>always</em> Defecting, getting their ‘payback’ over and over. Does this remind you of anyone you know?</p>
+
+<p>John finds himself stuck for words other than Nice or ‘Niceness’ to describe a key element of a successful strategy. This is to signal to the other ‘player’ of you’re preparedness to Cooperate. There is a corresponding ‘Not-Nice’ with the opposite level of success in the Tournament.</p>
+
+<p>The Tournament was won by <a href="https://en.wikipedia.org/wiki/Anatol_Rapoport">Anatole Rappaport</a>, who liaised with John after the tournament, reminding him that this thought experiment would have a poor representation in Daylight Life, due to the immense complexity of human behaviour in ‘the Wild’.</p>
+
+<p>The key findings from the tournament are, in order:</p>
+
+<ol>
+  <li>Be Nice. Keep Cooperating as long as the ‘other guy does’. Don’t ‘start trouble’</li>
+  <li>Be forgiving. Leaning into ‘payback’ or ‘punishment’ will cost you as a strategy.</li>
+  <li>Be provokable. If you’re a ‘sucker’ all the time, you are setting yourself up for exploitation from ‘the other guy’</li>
+</ol>
+
+<p>Why so many quoted ‘other guys’ and ‘other players’ in my writing above? Here, I’m paying credence to John’s advice through the interview. Be careful of Zero Sum thinking. There is no room for ‘opponents’ in successful Game Theoretical Strategy. In John’s experience, there are almost zero real life examples of Zero Sum situations in life - “Sports and Warfare” are about the only two.</p>
+
+<p>This last thought called up something pretty deep for me. I am notoriously un-interested in Games that have victors. I will write this up one day with a working title of How Winners behave like Loosers”.</p>
+
+<h2 id="larger-tournaments">Larger Tournaments</h2>
+
+<p>Axelrod went on to involved thousands of people in tournaments to find the best strategies for the Repeated Prisoners Dilemma. The results follow the same <a href="https://cs.stanford.edu/people/eroberts/courses/soco/projects/1998-99/game-theory/axelrod.html">findings, published by Stanford</a></p>
+
+<h2 id="daylight-world-examples-of-the-prisoners-dilemma">Daylight World examples of The Prisoners Dilemma</h2>
+
+<p>Here is a brief summary of ‘real world’ examples of the Reciprocity (tit for tat) strategy.</p>
+
+<h3 id="trench-warfare">Trench Warfare.</h3>
+
+<p>John reviewed a sociology journal referring to the Live and Let Live strategy that was reported during WWI. Artillery would shoot <em>between</em> the first and second trench lines. In doing so, they demonstrated accuracy, <em>while</em> showing the other side how <em>not</em> to kill or main, while keeping their Generals happy.</p>
+
+<h3 id="the-selfish-gene-and-altruism">The Selfish Gene and Altruism</h3>
+
+<p>John and Steve discuss Richard Dawkin’s glowing review to <a href="https://en.wikipedia.org/wiki/The_Evolution_of_Cooperation">The Evolution of Cooperation</a> (a book I can’t wait to read). Dawkin’s describes it as the best replacement for the Gideon Bible. But Steve asks, don’t the key findings around Cooperation run contrary to the Selfish Gene ideas?</p>
+
+<p>Steve - <em>“When I interact with strangers, I, for a variety of complicated reasons around identity and wanting to feel like I’m a good person… I act like I <strong>care</strong> about them a little. I’ll be nice to them even if it’s unlikely we’ll play games over and over again.”</em></p>
+
+<p>John - <em>“Kinship and ethnocentrism are well studied basis for Cooperation”</em> (BB: Mmmm - I don’t think these ideas are likely to fly in academia these day)</p>
+
+<p>After some back and forth on altruism, John suggests that a strong bias towards ‘nice-ness’/tendance-to-cooperate will result in “being taken advantage of”. (BB - I think we’d all have seen or experienced this behavioral dynamic)</p>
+
+<h2 id="the-key-finding-for-me">The Key Finding for me</h2>
+
+<p>John: <em>“You can do really well without <strong>ever</strong> doing better than the ‘other player’. In fact, ‘tit for tat’ can not possibly do <strong>better</strong>, because it never Defects until the other ‘player’ does. This is quite counter-intuitive to most people.”</em></p>
+
+<p>Here’s the kicker (IMO) from John <em>“Zero sum thinking can’t make sense of this at all. But it makes sense in this context, where what works well is, if you can elicit Cooperation, not necessarily to hurt the ‘other guy’.”</em></p>
+
+<p>For me, this helps me understand my instinct to call Winners Loosers</p>
+
+<p>John <em>“It’s obvious after you Say it. You can do really well without outdoing the ‘other guy’. It’s not obvious before you say it and in fact, it even seems nuts”</em></p>
+
+<h2 id="wrapping-up">Wrapping Up</h2>
+
+<p>You can finish off the episode with some application of John’s work to the method of action in cancer cells through to the design of Cyber warfare strategies.</p>
+
+<p>Steve’s coda <em>“My first Life Principle is to be Nice. My second Life Principle, is to be provokable - when someone tries to take advantage of me, I’m willing to fight. My third life principle is to be Forgiving. While I still have some work to do to reach the unlimited forgiveness embodied by Tit for Tat. All and all, these principles seem a pretty good framework to build a Life. Not bad for a strategy that only requires two lines of code”</em></p>
+
+<p>I’m looking forward to reading <a href="https://en.wikipedia.org/wiki/The_Evolution_of_Cooperation">The Evolution of Cooperation</a></p>
+
+<p>Oh, I realise that I haven’t crystalied the Two Line of Code thing. The podcasts assumes you can visualise this or grok it in your own way.</p>
+
+<p>I believe it would resemble the following (which could be written on 2 lines, but I’m not feeling the relevance of that right now.)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>start:
+
+Cooperate()
+while playing:
+  if OtherPlayerCooperated:
+    Cooperate()
+  else
+    Defect()
+end
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+            </div>
+
+            <!-- Rating -->
+            
+
+            <!-- Post Date -->
+            <p>
+            <small>
+                <span class="post-date"><time class="post-date" datetime="2021-10-10">10 Oct 2021</time></span>           
+                
+                </small>
+            </p>
+
+            <!-- Post Categories -->
+            <div class="after-post-cats">
+                <ul class="tags mb-4">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="../categories.html#winning-is-boring">winning-is-boring</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Categories -->
+
+            <!-- Post Tags -->
+            <div class="after-post-tags">
+                <ul class="tags">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="../tags.html#game_theory">#game_theory</a>
+                    </li>
+                    
+                    <li>
+                        <a class="smoothscroll" href="../tags.html#human-behaviour">#human-behaviour</a>
+                    </li>
+                    
+                    <li>
+                        <a class="smoothscroll" href="../tags.html#winning">#winning</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Tags -->
+
+            <!-- Prev/Next -->
+            <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+            
+            <a class="prev d-block col-md-6" href="https://spring-is-the-word/"> &laquo; Spring Is The Word</a>
+            
+            
+            <a class="next d-block col-md-6 text-lg-right" href="https://from-both-sides/">From Both Sides &raquo; </a>
+            
+            <div class="clearfix"></div>
+            </div>
+            <!-- End Categories -->
+
+        </div>
+        <!-- End Post -->
+
+    </div>
+</div>
+<!-- End Article
+================================================== -->
+
+<!-- Begin Comments
+================================================== -->
+
+<!--End Comments
+================================================== -->
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+</div>
+
+
+    
+</div>
+
+<!-- Categories Jumbotron
+================================================== -->
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 transpdark align-self-center text-center h-100">
+            <div class="d-md-flex align-items-center justify-content-center h-100">
+                <h2 class="d-md-block align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>
+            </div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+            
+            
+                
+                    <a class="mt-1 mb-1" href="../categories.html#human-development">human development (7)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#difficult-conversations">difficult conversations (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#the-breakdown">the-breakdown (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#data-sovereignty">data sovereignty (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#surveillance-capitalism">surveillance capitalism (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#dystopian-fiction">dystopian fiction (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#SSID">SSID (2)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#identity">identity (2)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#web-of-trust">web-of-trust (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#waters-edge-dreamland">waters-edge-dreamland (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#post-truth-world">post-truth-world (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#podcasts">podcasts (3)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#python">python (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#privacy">privacy (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#illusions">illusions (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#meta-reality">meta reality (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#language">language (2)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#journals">journals (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#books">books (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#internet-gold">internet-gold (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#perception">perception (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#curiosity">curiosity (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#templates">templates (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#winning-is-boring">winning-is-boring (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#contrafactum">contrafactum (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#Game-B">Game B (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#impermanence">impermanence (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#game-theory">game theory (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#existence">existence (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#fear-of-death">fear of death (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#epistemology">epistemology (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#ecology">ecology (3)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#economy">economy (3)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#physics">physics (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#chemistry">chemistry (1)</a>
+                
+                    <a class="mt-1 mb-1" href="../categories.html#life-as-drama">life as drama (1)</a>
+                
+            
+            
+		</div>
+	</div>
+</div>
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                Copyright © 2025 Ben's musings on life 
+            </div>
+            <div class="col-md-6 col-sm-6 text-center text-lg-right">    
+                <a target="_blank" href="https://www.wowthemes.net/mediumish-free-jekyll-template/">Mediumish Jekyll Theme</a> by WowThemes.net
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts
+================================================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="../assets/js/mediumish.js"></script>
+
+
+
+<script src="../assets/js/ie10-viewport-bug-workaround.js"></script> 
+
+
+<script id="dsq-count-scr" src="https://.disqus.com/count.js"></script>
+
+
+</body>
+</html>

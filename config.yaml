@@ -1,0 +1,37 @@
+baseURL: "https://www.benburke.org/"
+languageCode: "en-us"
+title: "Ben Burke"
+theme: "PaperMod"
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+menu:
+  main:
+    - identifier: portfolio
+      name: Professional
+      url: /portfolio/
+      weight: 10
+    - identifier: posts
+      name: Personal Blog
+      url: /posts/
+      weight: 20
+    - identifier: archive
+      name: Archive
+      url: /archive/index.html
+      weight: 30
+
+params:
+  env: production
+  title: Ben Burke
+  description: "IT Consultant | Linux Enthusiast"
+  keywords: [Blog, Portfolio, PaperMod]
+  author: Ben Burke
+  defaultTheme: auto
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true

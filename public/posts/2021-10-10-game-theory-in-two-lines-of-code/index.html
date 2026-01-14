@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Game Theory In Two Lines Of Code | Ben Burke</title>
+<meta name="keywords" content="game_theory, human-behaviour, winning">
+<meta name="description" content="Game Theory In Two Lines Of Code">
+<meta name="author" content="Ben">
+<link rel="canonical" href="http://localhost:1313/posts/2021-10-10-game-theory-in-two-lines-of-code/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2021-10-10-game-theory-in-two-lines-of-code/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="http://localhost:1313/posts/2021-10-10-game-theory-in-two-lines-of-code/">
+  <meta property="og:site_name" content="Ben Burke">
+  <meta property="og:title" content="Game Theory In Two Lines Of Code">
+  <meta property="og:description" content="Game Theory In Two Lines Of Code">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:tag" content="Game_theory">
+    <meta property="article:tag" content="Human-Behaviour">
+    <meta property="article:tag" content="Winning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Game Theory In Two Lines Of Code">
+<meta name="twitter:description" content="Game Theory In Two Lines Of Code">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Game Theory In Two Lines Of Code",
+      "item": "http://localhost:1313/posts/2021-10-10-game-theory-in-two-lines-of-code/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Game Theory In Two Lines Of Code",
+  "name": "Game Theory In Two Lines Of Code",
+  "description": "Game Theory In Two Lines Of Code",
+  "keywords": [
+    "game_theory", "human-behaviour", "winning"
+  ],
+  "articleBody": "Can we simplify the Theory? I’m Game. Wanna skip to the end? The summary is, game theory studies suggest that your best strategy set for life consists of:\nBeing ’nice’ to others Forgiving others Being provokable by others Sounds like grand-parent wisdom, ja? Except for the last point. Read on if you’d like to break down Game Theory and what the formal studies have shown. I can promise you some surprises.\nAs a long time reader of Dubner and Levitt, I’ve been a listener at the Freakanomics Radio Network\nIt’s a great resource. The newer episodes are Steve Levitt and Angela Duckworth, who have an awesome rapport and chemistry. I recommend all of the Freakanomics shows, including People I mostly Admire, No Stupid Questions and Sudhir Breaks the Internet\nEnter Robert Axelrod This writing was inspired by a recent People I (mostly) Admire podcast, EP47 Why Being Nice, Forgiving, and Provokable are the Best Strategies for Life\nIn my living study of audio learning, I’m amazed to find that salient points, such as the names of authors, will ‘stick’ even when I lose most of the content by listening while working or being otherwise distracted.\nI’d heard Robert Axelrod’s name many times before. Steve explains this early in the podcast.\nSteve - Roughly 40 years ago, you had the idea to run a little tournament for 13 academic Game Theorists. Did you ever imagine at the time, this would launch a research agenda that get over 50,000 academic citations?\nJohn - No, I just did it for fun\nThe interview begins with Steve and John attempting to give a primer on Game Theory. We’ve all heard something like this before, no doubt. It’s actually not that clear of an explanation.\nThe show’s producer, [Morgan Levy]{https://morganlevey.com/}, steps in to clarify. (I’m paraphrasing slightly here.)\nThe Prisoner’s Dilemma is a hypothetical scenario in Game Theory. Imagine Steve and Morgan are in custody for jointly committing a crime. The evidence the police have is weak. The are arrested at the same time and taken to separate holding cells at a police station\nThe police explain to Morgan that their are four possible outcomes to the current situation and the Morgan’s outcome will depend on what she chooses to do and what Steve, separately, chooses to do.\n*Two more key pieces of information are: Steve and Morgan cannot talk to each other. Morgan has only two courses of action - Rat Out on Steve, or Stay silent.\nThe joint scenario set looks like this:\nMorgan Rat’s on Steve. Steve stays silent. In this case, Morgan is Defecting on her partnership with Steve. Morgan walks free. Steve goes to jail for 20 years. Neither party Rat’s Out on the other. Both parties are cooperating with each other. As the evidence is weak, both are sentenced to 1 year of jail time. Both Steve and Morgan Rat Out on each other. Both go to jail for 10 years, a lower sentence as a reward for testifying against each other. Steve Rat’s Out on Morgan. He walks free. Morgan gets 20 years in prison. What’s the best course of action for Morgan?\nJohn explains: Each party is better of Defecting, double crossing the other, acting on their own interest only. But of both of them do that, the both end up worse off as a result. From a Game Theory perspective, Defection is called a Dominant Strategy, meaning it’s the best strategy, no matter what the other party does.\nIf the other guy Cooperates (stays silent), you can exploit their cooperation by Defecting. If the other party Defects, then you’d be a sucker to Cooperate.\nJohn goes on to point out that these kinds of scenarios (which I’ve heard many times before), describe the situation where the Game is Played only Once. The emphasis on once is where the term Dilemma is earned.\nSteve sums up So, this scenario describes a situation where the best thing we could do is Cooperate. But, since our private incentives get in the way, so we can’t do that. We left stuck at the only other outcome - we Both Defect, and end up with a pretty bad outcome, but not as bad as if we were made the Sucker by the Other.\nThe Set of All Games This podcast took me to new places in terms of game theory by distinguishing this hypothetical single-pass game from the far more common human experience of…behaviours that arise over time in circumstances that repeat, at least partially.\nJohn: The original analysis I read when I was 17 said, if you know when the game is going to end, you are better of Defecting right from the beginning. If you don’t know when the game is going to end, you can use the history of the game to update your strategy.\nSteve: “If you play the game over and over, you can use the future rounds to Punish the other party if the Defect on you now. You are demonstrating to the other, “I’ll cooperate with you, as long as you don’t Defect on me. Over time, a Game-Theoretical Equilibrium can arise as both parties learn to exploit the benefits of Cooperation”\nJohn: “I call that the Shadow of the Future, the idea that the Future can effect what you’re doing now.”\nThe Repeated Prisoners Dilemma Tournament John had ran a contest based on Computerised Chess Tournaments. He involved 13 academic researches who each submitted a codified or algorithmic solutions to the Repeated Prisoner’s Dilemma. John collected results over a number of iterations of this Tournament approach, and found the following ‘winning’ strategies’.\nInsights None of the submissions included to the two most simple and obvious strategies. Always Cooperating or Always Defecting lead to the worst set of pay-offs.\nReciprocity (or Tit for Tat) was far and away the most successful strategy found in the Tournament(s). The summary, from John is:\n“Tit for Tat - A player Cooperates on the First move. Then does what the other ‘player’ does on each subsequent move”\nWhat you are communicating is: “I’m willing to Cooperate if you are. If you’re not, I’m going to Defect. I’m just gonna Echo what you do. Hopefully you realise that you are better off Cooperating with me, then I’ll Cooperate the next time. Then we can bother do pretty well”\nJohn goes on to give explanations of tragic strategic failures - the worst of which, is Massive Retaliation or the Grim Reaper strategy. This is when a ‘player’ responds to Defection by always Defecting, getting their ‘payback’ over and over. Does this remind you of anyone you know?\nJohn finds himself stuck for words other than Nice or ‘Niceness’ to describe a key element of a successful strategy. This is to signal to the other ‘player’ of you’re preparedness to Cooperate. There is a corresponding ‘Not-Nice’ with the opposite level of success in the Tournament.\nThe Tournament was won by Anatole Rappaport, who liaised with John after the tournament, reminding him that this thought experiment would have a poor representation in Daylight Life, due to the immense complexity of human behaviour in ’the Wild’.\nThe key findings from the tournament are, in order:\nBe Nice. Keep Cooperating as long as the ‘other guy does’. Don’t ‘start trouble’ Be forgiving. Leaning into ‘payback’ or ‘punishment’ will cost you as a strategy. Be provokable. If you’re a ‘sucker’ all the time, you are setting yourself up for exploitation from ’the other guy’ Why so many quoted ‘other guys’ and ‘other players’ in my writing above? Here, I’m paying credence to John’s advice through the interview. Be careful of Zero Sum thinking. There is no room for ‘opponents’ in successful Game Theoretical Strategy. In John’s experience, there are almost zero real life examples of Zero Sum situations in life - “Sports and Warfare” are about the only two.\nThis last thought called up something pretty deep for me. I am notoriously un-interested in Games that have victors. I will write this up one day with a working title of How Winners behave like Loosers”.\nLarger Tournaments Axelrod went on to involved thousands of people in tournaments to find the best strategies for the Repeated Prisoners Dilemma. The results follow the same findings, published by Stanford\nDaylight World examples of The Prisoners Dilemma Here is a brief summary of ‘real world’ examples of the Reciprocity (tit for tat) strategy.\nTrench Warfare. John reviewed a sociology journal referring to the Live and Let Live strategy that was reported during WWI. Artillery would shoot between the first and second trench lines. In doing so, they demonstrated accuracy, while showing the other side how not to kill or main, while keeping their Generals happy.\nThe Selfish Gene and Altruism John and Steve discuss Richard Dawkin’s glowing review to The Evolution of Cooperation (a book I can’t wait to read). Dawkin’s describes it as the best replacement for the Gideon Bible. But Steve asks, don’t the key findings around Cooperation run contrary to the Selfish Gene ideas?\nSteve - “When I interact with strangers, I, for a variety of complicated reasons around identity and wanting to feel like I’m a good person… I act like I care about them a little. I’ll be nice to them even if it’s unlikely we’ll play games over and over again.”\nJohn - “Kinship and ethnocentrism are well studied basis for Cooperation” (BB: Mmmm - I don’t think these ideas are likely to fly in academia these day)\nAfter some back and forth on altruism, John suggests that a strong bias towards ’nice-ness’/tendance-to-cooperate will result in “being taken advantage of”. (BB - I think we’d all have seen or experienced this behavioral dynamic)\nThe Key Finding for me John: “You can do really well without ever doing better than the ‘other player’. In fact, ’tit for tat’ can not possibly do better, because it never Defects until the other ‘player’ does. This is quite counter-intuitive to most people.”\nHere’s the kicker (IMO) from John “Zero sum thinking can’t make sense of this at all. But it makes sense in this context, where what works well is, if you can elicit Cooperation, not necessarily to hurt the ‘other guy’.”\nFor me, this helps me understand my instinct to call Winners Loosers\nJohn “It’s obvious after you Say it. You can do really well without outdoing the ‘other guy’. It’s not obvious before you say it and in fact, it even seems nuts”\nWrapping Up You can finish off the episode with some application of John’s work to the method of action in cancer cells through to the design of Cyber warfare strategies.\nSteve’s coda “My first Life Principle is to be Nice. My second Life Principle, is to be provokable - when someone tries to take advantage of me, I’m willing to fight. My third life principle is to be Forgiving. While I still have some work to do to reach the unlimited forgiveness embodied by Tit for Tat. All and all, these principles seem a pretty good framework to build a Life. Not bad for a strategy that only requires two lines of code”\nI’m looking forward to reading The Evolution of Cooperation\nOh, I realise that I haven’t crystalied the Two Line of Code thing. The podcasts assumes you can visualise this or grok it in your own way.\nI believe it would resemble the following (which could be written on 2 lines, but I’m not feeling the relevance of that right now.)\ns C w e t o h n a o i i e d r p l f l t e e C s D : r O o e e a p t o f t l h p e e a e e c ( y r r t ) i P a ( n l t ) g a e : y ( e ) r C o o p e r a t e d : ",
+  "wordCount" : "2001",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Ben"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/2021-10-10-game-theory-in-two-lines-of-code/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ben Burke",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Ben Burke (Alt + H)">Ben Burke</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/portfolio/" title="Professional">
+                    <span>Professional</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="Personal Blog">
+                    <span>Personal Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archive/index.html" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Game Theory In Two Lines Of Code
+    </h1>
+    <div class="post-description">
+      Game Theory In Two Lines Of Code
+    </div>
+    <div class="post-meta"><span>10 min</span>&nbsp;·&nbsp;<span>Ben</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="can-we-simplify-the-theory-im-game">Can we simplify the Theory? I&rsquo;m Game.<a hidden class="anchor" aria-hidden="true" href="#can-we-simplify-the-theory-im-game">#</a></h1>
+<p>Wanna skip to the end? The summary is, game theory studies suggest that your best strategy set for life consists of:</p>
+<ul>
+<li>Being &rsquo;nice&rsquo; to others</li>
+<li>Forgiving others</li>
+<li>Being provokable by others</li>
+</ul>
+<p>Sounds like grand-parent wisdom, ja? Except for the last point. Read on if you&rsquo;d like to break down Game Theory and what the formal studies have shown. I can promise you some surprises.</p>
+<p>As a long time reader of <a href="https://freakonomics.com/about/">Dubner and Levitt</a>, I&rsquo;ve been a listener at the <a href="https://freakonomics.com/radio/radio-bios/">Freakanomics Radio Network</a></p>
+<p>It&rsquo;s a great resource. The newer episodes are Steve Levitt and <a href="https://angeladuckworth.com/">Angela Duckworth</a>, who have an awesome rapport and chemistry. I recommend all of the Freakanomics shows, including <a href="https://freakonomics.com/pima/">People I mostly Admire</a>, <a href="https://freakonomics.com/nsq-archive/">No Stupid Questions</a> and <a href="https://freakonomics.com/sudhir-breaks-the-internet-2/">Sudhir Breaks the Internet</a></p>
+<h2 id="enter-robert-axelrod">Enter Robert Axelrod<a hidden class="anchor" aria-hidden="true" href="#enter-robert-axelrod">#</a></h2>
+<p>This writing was inspired by a recent People I (mostly) Admire podcast, EP47 <a href="https://freakonomics.com/podcast/pima-robert-axelrod/">Why Being Nice, Forgiving, and Provokable are the Best Strategies for Life</a></p>
+<p>In my living study of audio learning, I&rsquo;m amazed to find that salient points, such as the names of authors, will &lsquo;stick&rsquo; even when I lose most of the content by listening while working or being otherwise distracted.</p>
+<p>I&rsquo;d heard Robert Axelrod&rsquo;s name many times before. Steve explains this early in the podcast.</p>
+<blockquote>
+<p>Steve - Roughly 40 years ago, you had the idea to run a little tournament for 13 academic Game Theorists. Did you ever imagine at the time, this would launch a research agenda that get over 50,000 academic citations?</p>
+<p>John - No, I just did it for fun</p></blockquote>
+<p>The interview begins with Steve and John attempting to give a primer on Game Theory. We&rsquo;ve all heard something like this before, no doubt. It&rsquo;s actually not that clear of an explanation.</p>
+<p>The show&rsquo;s producer, [Morgan Levy]{https://morganlevey.com/}, steps in to clarify. (I&rsquo;m paraphrasing slightly here.)</p>
+<p><em>The Prisoner&rsquo;s Dilemma is a hypothetical scenario in Game Theory. Imagine Steve and Morgan are in custody for jointly committing a crime. The evidence the police have is weak. The are arrested at the same time and taken to separate holding cells at a police station</em></p>
+<p><em>The police explain to Morgan that their are four possible outcomes to the current situation and the Morgan&rsquo;s outcome will depend on what she chooses to do and what Steve, separately, chooses to do.</em></p>
+<p>*Two more key pieces of information are: Steve and Morgan cannot talk to each other. Morgan has only two courses of action - Rat Out on Steve, or Stay silent.</p>
+<p>The joint scenario set looks like this:</p>
+<ol>
+<li>Morgan Rat&rsquo;s on Steve. Steve stays silent. In this case, Morgan is Defecting on her partnership with Steve. Morgan walks free. Steve goes to jail for 20 years.</li>
+<li>Neither party Rat&rsquo;s Out on the other. Both parties are cooperating with each other. As the evidence is weak, both are sentenced to 1 year of jail time.</li>
+<li>Both Steve and Morgan Rat Out on each other. Both go to jail for 10 years, a lower sentence as a reward for testifying against each other.</li>
+<li>Steve Rat&rsquo;s Out on Morgan. He walks free. Morgan gets 20 years in prison.</li>
+</ol>
+<p><em>What&rsquo;s the best course of action for Morgan?</em></p>
+<blockquote>
+<p>John explains: Each party is better of Defecting, double crossing the other, acting on their own interest only. But of <em>both</em> of them do that, the both end up worse off as a result.
+From a Game Theory perspective, Defection is called a Dominant Strategy, meaning it&rsquo;s the best strategy, no matter what the other party does.</p>
+<p>If the other guy Cooperates (stays silent), you can exploit their cooperation by Defecting. If the other party Defects, then you&rsquo;d be a sucker to Cooperate.</p></blockquote>
+<p>John goes on to point out that these kinds of scenarios (which I&rsquo;ve heard many times before), describe the situation where the Game is Played only Once. The emphasis on <strong>once</strong> is where the term Dilemma is earned.</p>
+<h2 id="steve-sums-up">Steve sums up<a hidden class="anchor" aria-hidden="true" href="#steve-sums-up">#</a></h2>
+<p><em>So, this scenario describes a situation where the best thing we could do is Cooperate. But, since our private incentives get in the way, so we can&rsquo;t do that. We left stuck at the only other outcome - we Both Defect, and end up with a pretty bad outcome, but not as bad as if we were made the Sucker by the Other.</em></p>
+<h2 id="the-set-of-all-games">The Set of All Games<a hidden class="anchor" aria-hidden="true" href="#the-set-of-all-games">#</a></h2>
+<p>This podcast took me to new places in terms of game theory by distinguishing this hypothetical single-pass game from the far more common human experience of&hellip;behaviours that arise over time in circumstances that repeat, at least partially.</p>
+<p>John: <em>The original analysis I read when I was 17 said, if you know when the game is going to end, you are better of Defecting right from the beginning. If you <strong>don&rsquo;t</strong> know when the game is going to end, you can use the history of the game to update your strategy.</em></p>
+<p>Steve: <em>&ldquo;If you play the game over and over, you can use the future rounds to Punish the other party if the Defect on you now. You are demonstrating to the other, &ldquo;I&rsquo;ll cooperate with you, as long as you don&rsquo;t Defect on me.  Over time, a Game-Theoretical Equilibrium can arise as both parties learn to exploit the benefits of Cooperation&rdquo;</em></p>
+<p>John: <em>&ldquo;I call that the Shadow of the Future, the idea that the Future can effect what you&rsquo;re doing now.&rdquo;</em></p>
+<h2 id="the-repeated-prisoners-dilemma-tournament">The Repeated Prisoners Dilemma Tournament<a hidden class="anchor" aria-hidden="true" href="#the-repeated-prisoners-dilemma-tournament">#</a></h2>
+<p>John had ran a contest based on Computerised Chess Tournaments. He involved 13 academic researches who each submitted a codified or algorithmic solutions to the Repeated Prisoner&rsquo;s Dilemma. John collected results over a number of iterations of this Tournament approach, and found the following &lsquo;winning&rsquo; strategies&rsquo;.</p>
+<h3 id="insights">Insights<a hidden class="anchor" aria-hidden="true" href="#insights">#</a></h3>
+<p>None of the submissions included to the two most simple and obvious strategies. Always Cooperating or Always Defecting lead to the <em>worst</em> set of pay-offs.</p>
+<p>Reciprocity (or Tit for Tat) was far and away the most successful strategy found in the Tournament(s). The summary, from John is:</p>
+<p><em>&ldquo;Tit for Tat - A player Cooperates on the First move. Then does what the other &lsquo;player&rsquo; does on each subsequent move&rdquo;</em></p>
+<p>What you are communicating is:  <em>&ldquo;I&rsquo;m willing to Cooperate if you are. If you&rsquo;re not, I&rsquo;m going to Defect. I&rsquo;m just gonna Echo what you do. Hopefully you realise that you are better off Cooperating with me, then I&rsquo;ll Cooperate the next time. Then we can bother do pretty well&rdquo;</em></p>
+<p>John goes on to give explanations of tragic strategic failures - the worst of which, is Massive Retaliation or the Grim Reaper strategy. This is when a &lsquo;player&rsquo; responds to Defection by <em>always</em> Defecting, getting their &lsquo;payback&rsquo; over and over. Does this remind you of anyone you know?</p>
+<p>John finds himself stuck for words other than Nice or &lsquo;Niceness&rsquo; to describe a key element of a successful strategy. This is to signal to the other &lsquo;player&rsquo; of you&rsquo;re preparedness to Cooperate. There is a corresponding &lsquo;Not-Nice&rsquo; with the opposite level of success in the Tournament.</p>
+<p>The Tournament was won by <a href="https://en.wikipedia.org/wiki/Anatol_Rapoport">Anatole Rappaport</a>, who liaised with John after the tournament, reminding him that this thought experiment would have a poor representation in Daylight Life, due to the immense complexity of human behaviour in &rsquo;the Wild&rsquo;.</p>
+<p>The key findings from the tournament are, in order:</p>
+<ol>
+<li>Be Nice. Keep Cooperating as long as the &lsquo;other guy does&rsquo;. Don&rsquo;t &lsquo;start trouble&rsquo;</li>
+<li>Be forgiving. Leaning into &lsquo;payback&rsquo; or &lsquo;punishment&rsquo; will cost you as a strategy.</li>
+<li>Be provokable. If you&rsquo;re a &lsquo;sucker&rsquo; all the time, you are setting yourself up for exploitation from &rsquo;the other guy&rsquo;</li>
+</ol>
+<p>Why so many quoted &lsquo;other guys&rsquo; and &lsquo;other players&rsquo; in my writing above? Here, I&rsquo;m paying credence to John&rsquo;s advice through the interview. Be careful of Zero Sum thinking. There is no room for &lsquo;opponents&rsquo; in successful Game Theoretical Strategy. In John&rsquo;s experience, there are almost zero real life examples of Zero Sum situations in life - &ldquo;Sports and Warfare&rdquo; are about the only two.</p>
+<p>This last thought called up something pretty deep for me. I am notoriously un-interested in Games that have victors. I will write this up one day with a working title of How Winners behave like Loosers&rdquo;.</p>
+<h2 id="larger-tournaments">Larger Tournaments<a hidden class="anchor" aria-hidden="true" href="#larger-tournaments">#</a></h2>
+<p>Axelrod went on to involved thousands of people in tournaments to find the best strategies for the Repeated Prisoners Dilemma. The results follow the same <a href="https://cs.stanford.edu/people/eroberts/courses/soco/projects/1998-99/game-theory/axelrod.html">findings, published by Stanford</a></p>
+<h2 id="daylight-world-examples-of-the-prisoners-dilemma">Daylight World examples of The Prisoners Dilemma<a hidden class="anchor" aria-hidden="true" href="#daylight-world-examples-of-the-prisoners-dilemma">#</a></h2>
+<p>Here is a brief summary of &lsquo;real world&rsquo; examples of the Reciprocity (tit for tat) strategy.</p>
+<h3 id="trench-warfare">Trench Warfare.<a hidden class="anchor" aria-hidden="true" href="#trench-warfare">#</a></h3>
+<p>John reviewed a sociology journal referring to the Live and Let Live strategy that was reported during WWI. Artillery would shoot <em>between</em> the first and second trench lines. In doing so, they demonstrated accuracy, <em>while</em> showing the other side how <em>not</em> to kill or main, while keeping their Generals happy.</p>
+<h3 id="the-selfish-gene-and-altruism">The Selfish Gene and Altruism<a hidden class="anchor" aria-hidden="true" href="#the-selfish-gene-and-altruism">#</a></h3>
+<p>John and Steve discuss Richard Dawkin&rsquo;s glowing review to <a href="https://en.wikipedia.org/wiki/The_Evolution_of_Cooperation">The Evolution of Cooperation</a> (a book I can&rsquo;t wait to read). Dawkin&rsquo;s describes it as the best replacement for the Gideon Bible. But Steve asks, don&rsquo;t the key findings around Cooperation run contrary to the Selfish Gene ideas?</p>
+<p>Steve - <em>&ldquo;When I interact with strangers, I, for a variety of complicated reasons around identity and wanting to feel like I&rsquo;m a good person&hellip; I act like I <strong>care</strong> about them a little. I&rsquo;ll be nice to them even if it&rsquo;s unlikely we&rsquo;ll play games over and over again.&rdquo;</em></p>
+<p>John - <em>&ldquo;Kinship and ethnocentrism are well studied basis for Cooperation&rdquo;</em> (BB: Mmmm - I don&rsquo;t think these ideas are likely to fly in academia these day)</p>
+<p>After some back and forth on altruism, John suggests that a strong bias towards &rsquo;nice-ness&rsquo;/tendance-to-cooperate will result in &ldquo;being taken advantage of&rdquo;. (BB - I think we&rsquo;d all have seen or experienced this behavioral dynamic)</p>
+<h2 id="the-key-finding-for-me">The Key Finding for me<a hidden class="anchor" aria-hidden="true" href="#the-key-finding-for-me">#</a></h2>
+<p>John: <em>&ldquo;You can do really well without <strong>ever</strong> doing better than the &lsquo;other player&rsquo;. In fact, &rsquo;tit for tat&rsquo; can not possibly do <strong>better</strong>, because it never Defects until the other &lsquo;player&rsquo; does. This is quite counter-intuitive to most people.&rdquo;</em></p>
+<p>Here&rsquo;s the kicker (IMO) from John <em>&ldquo;Zero sum thinking can&rsquo;t make sense of this at all. But it makes sense in this context, where what works well is, if you can elicit Cooperation, not necessarily to hurt the &lsquo;other guy&rsquo;.&rdquo;</em></p>
+<p>For me, this helps me understand my instinct to call Winners Loosers</p>
+<p>John <em>&ldquo;It&rsquo;s obvious after you Say it. You can do really well without outdoing the &lsquo;other guy&rsquo;. It&rsquo;s not obvious before you say it and in fact, it even seems nuts&rdquo;</em></p>
+<h2 id="wrapping-up">Wrapping Up<a hidden class="anchor" aria-hidden="true" href="#wrapping-up">#</a></h2>
+<p>You can finish off the episode with some application of John&rsquo;s work to the method of action in cancer cells through to the design of Cyber warfare strategies.</p>
+<p>Steve&rsquo;s coda <em>&ldquo;My first Life Principle is to be Nice. My second Life Principle, is to be provokable - when someone tries to take advantage of me, I&rsquo;m willing to fight. My third life principle is to be Forgiving. While I still have some work to do to reach the unlimited forgiveness embodied by Tit for Tat. All and all, these principles seem a pretty good framework to build a Life. Not bad for a strategy that only requires two lines of code&rdquo;</em></p>
+<p>I&rsquo;m looking forward to reading <a href="https://en.wikipedia.org/wiki/The_Evolution_of_Cooperation">The Evolution of Cooperation</a></p>
+<p>Oh, I realise that I haven&rsquo;t crystalied the Two Line of Code thing. The podcasts assumes you can visualise this or grok it in your own way.</p>
+<p>I believe it would resemble the following (which could be written on 2 lines, but I&rsquo;m not feeling the relevance of that right now.)</p>
+
+
+
+<div class="goat svg-container ">
+  
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      font-family="Menlo,Lucida Console,monospace"
+      
+        viewBox="0 0 224 153"
+      >
+      <g transform='translate(8,16)'>
+<text text-anchor='middle' x='0' y='4' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='0' y='36' fill='currentColor' style='font-size:1em'>C</text>
+<text text-anchor='middle' x='0' y='52' fill='currentColor' style='font-size:1em'>w</text>
+<text text-anchor='middle' x='0' y='132' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='8' y='4' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='8' y='36' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='8' y='52' fill='currentColor' style='font-size:1em'>h</text>
+<text text-anchor='middle' x='8' y='132' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='16' y='4' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='16' y='36' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='16' y='52' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='16' y='68' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='16' y='100' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='16' y='132' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='24' y='4' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='24' y='36' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='24' y='52' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='24' y='68' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='24' y='100' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='32' y='4' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='32' y='36' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='32' y='52' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='32' y='84' fill='currentColor' style='font-size:1em'>C</text>
+<text text-anchor='middle' x='32' y='100' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='32' y='116' fill='currentColor' style='font-size:1em'>D</text>
+<text text-anchor='middle' x='40' y='4' fill='currentColor' style='font-size:1em'>:</text>
+<text text-anchor='middle' x='40' y='36' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='40' y='68' fill='currentColor' style='font-size:1em'>O</text>
+<text text-anchor='middle' x='40' y='84' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='40' y='100' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='40' y='116' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='48' y='36' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='48' y='52' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='48' y='68' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='48' y='84' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='48' y='116' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='56' y='36' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='56' y='52' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='56' y='68' fill='currentColor' style='font-size:1em'>h</text>
+<text text-anchor='middle' x='56' y='84' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='56' y='116' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='64' y='36' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='64' y='52' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='64' y='68' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='64' y='84' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='64' y='116' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='72' y='36' fill='currentColor' style='font-size:1em'>(</text>
+<text text-anchor='middle' x='72' y='52' fill='currentColor' style='font-size:1em'>y</text>
+<text text-anchor='middle' x='72' y='68' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='72' y='84' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='72' y='116' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='80' y='36' fill='currentColor' style='font-size:1em'>)</text>
+<text text-anchor='middle' x='80' y='52' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='80' y='68' fill='currentColor' style='font-size:1em'>P</text>
+<text text-anchor='middle' x='80' y='84' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='80' y='116' fill='currentColor' style='font-size:1em'>(</text>
+<text text-anchor='middle' x='88' y='52' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='88' y='68' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='88' y='84' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='88' y='116' fill='currentColor' style='font-size:1em'>)</text>
+<text text-anchor='middle' x='96' y='52' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='96' y='68' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='96' y='84' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='104' y='52' fill='currentColor' style='font-size:1em'>:</text>
+<text text-anchor='middle' x='104' y='68' fill='currentColor' style='font-size:1em'>y</text>
+<text text-anchor='middle' x='104' y='84' fill='currentColor' style='font-size:1em'>(</text>
+<text text-anchor='middle' x='112' y='68' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='112' y='84' fill='currentColor' style='font-size:1em'>)</text>
+<text text-anchor='middle' x='120' y='68' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='128' y='68' fill='currentColor' style='font-size:1em'>C</text>
+<text text-anchor='middle' x='136' y='68' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='144' y='68' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='152' y='68' fill='currentColor' style='font-size:1em'>p</text>
+<text text-anchor='middle' x='160' y='68' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='168' y='68' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='176' y='68' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='184' y='68' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='192' y='68' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='200' y='68' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='208' y='68' fill='currentColor' style='font-size:1em'>:</text>
+</g>
+
+    </svg>
+  
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/game_theory/">Game_theory</a></li>
+      <li><a href="http://localhost:1313/tags/human-behaviour/">Human-Behaviour</a></li>
+      <li><a href="http://localhost:1313/tags/winning/">Winning</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/posts/2021-10-30-fruit-cake-of-pod/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Fruit Cake Of Pod</span>
+  </a>
+  <a class="next" href="http://localhost:1313/posts/2021-09-24-i-dragged-myself-out-of-bed/">
+    <span class="title">Next »</span>
+    <br>
+    <span>I Dragged Myself Out Of Bed</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">Ben Burke</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ecology on Ben Burke</title>
+    <link>http://localhost:1313/categories/ecology/</link>
+    <description>Recent content in Ecology on Ben Burke</description>
+    <generator>Hugo -- 0.146.0</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/categories/ecology/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Democracy Fries</title>
+      <link>http://localhost:1313/posts/2022-08-13-democracy-fries/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2022-08-13-democracy-fries/</guid>
+      <description>Democracy Fries</description>
+    </item>
+    <item>
+      <title>Investments And Perpetual Motion</title>
+      <link>http://localhost:1313/posts/2022-02-18-investments-and-perpetual-motion/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2022-02-18-investments-and-perpetual-motion/</guid>
+      <description>Investments And Perpetual Motion</description>
+    </item>
+    <item>
+      <title>Signal To Noise</title>
+      <link>http://localhost:1313/posts/2023-03-07-signal-to-noise/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2023-03-07-signal-to-noise/</guid>
+      <description>Signal To Noise</description>
+    </item>
+  </channel>
+</rss>

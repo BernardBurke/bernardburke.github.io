@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Transpersonal Computing on Ben Burke</title>
+    <link>http://localhost:1313/tags/transpersonal-computing/</link>
+    <description>Recent content in Transpersonal Computing on Ben Burke</description>
+    <generator>Hugo -- 0.146.0</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/tags/transpersonal-computing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>We are In San Junipero aleady</title>
+      <link>http://localhost:1313/posts/2021-09-18-we-are-in-san-junipero-aleady/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2021-09-18-we-are-in-san-junipero-aleady/</guid>
+      <description>We Are In San Junipero Aleady</description>
+    </item>
+  </channel>
+</rss>

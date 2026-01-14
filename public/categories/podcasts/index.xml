@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Podcasts on Ben Burke</title>
+    <link>http://localhost:1313/categories/podcasts/</link>
+    <description>Recent content in Podcasts on Ben Burke</description>
+    <generator>Hugo -- 0.146.0</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/categories/podcasts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>This Week In Media - Issue #0.1</title>
+      <link>http://localhost:1313/posts/2021-09-27-this-week-in-media-28-sep/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2021-09-27-this-week-in-media-28-sep/</guid>
+      <description>This Week In Media 28 Sep</description>
+    </item>
+    <item>
+      <title>Travis Oliphant (Numpy Scipy) on the  Lex Fridman podcast</title>
+      <link>http://localhost:1313/posts/2021-09-23-travis-oliphant-numpy-scipy-lex-fridman/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2021-09-23-travis-oliphant-numpy-scipy-lex-fridman/</guid>
+      <description>Travis Oliphant Numpy Scipy Lex Fridman</description>
+    </item>
+    <item>
+      <title>Who the Hell is Jim Rutt?</title>
+      <link>http://localhost:1313/posts/2021-10-18-grumpy-can-be-ok/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2021-10-18-grumpy-can-be-ok/</guid>
+      <description>From Both Sides</description>
+    </item>
+  </channel>
+</rss>
