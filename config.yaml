@@ -27,7 +27,6 @@ params:
   env: production
   title: Ben Burke
   description: "IT Consultant | Linux Enthusiast"
-  keywords: [Blog, Portfolio, PaperMod]
   author: Ben Burke
   defaultTheme: auto
   ShowReadingTime: true
@@ -35,3 +34,30 @@ params:
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
+
+  # --- PROFILE MODE (Big Centered Icons) ---
+  profileMode:
+    enabled: true
+    title: "Ben Burke"
+    subtitle: "IT Consultant | Linux Enthusiast | Open Source Contributor"
+    # If you have a profile pic, uncomment the next line:
+    # imageUrl: "/assets/me.jpg"
+    imageWidth: 120
+    imageHeight: 120
+    buttons:
+      - name: Professional Portfolio
+        url: /portfolio
+      - name: Personal Blog
+        url: /posts
+
+  # --- SOCIAL ICONS ---
+  # Note: Indentation must match 'profileMode' exactly
+  socialIcons:
+    - name: github
+      url: "https://github.com/bernardburke"
+    - name: email
+      url: "mailto:bernard.francis.burke@gmail.com"
+    # "cv" isn't a standard icon, so we use a text label trick or a generic icon
+    # For now, let's use the standard "file" icon if available, or just the text
+    - name: cv
+      url: "/cv.pdf"
